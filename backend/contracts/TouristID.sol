@@ -22,8 +22,12 @@ contract TouristID is AccessControl {
     event TouristRegistered(address indexed touristAddress, string name);
 
     constructor() {
-        // Skip _setupRole to avoid revert; grant roles manually after deployment
-    }
+    _grantRole(DEFAULT_ADMIN_ROLE, msg.sender);
+    _grantRole(TOURISM_ROLE, msg.sender);
+    _grantRole(POLICE_ROLE, msg.sender);
+}
+
+
 
     function registerTourist(
         address _touristAddress,

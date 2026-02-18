@@ -2,12 +2,25 @@ require("@nomicfoundation/hardhat-ethers");
 require("dotenv").config();
 
 module.exports = {
-  solidity: "0.8.20",
+  solidity: {
+    compilers: [
+      {
+        version: "0.8.20",
+        settings: {
+          optimizer: {
+            enabled: true,
+            runs: 200
+          }
+        }
+      }
+    ]
+  },
   networks: {
-    polygon: {
+    amoy: {
       url: process.env.RPC_URL,
       accounts: [`0x${process.env.PRIVATE_KEY}`],
-      timeout: 600000
+      chainId: 80002
     }
   }
 };
+
