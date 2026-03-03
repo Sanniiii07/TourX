@@ -1,20 +1,18 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import {BrowserRouter, Routes, Route} from "react-router-dom";
+import Landing from "./tourist/pages/Landing";
+import touristHome from "./tourist/pages/touristHome";
 import PoliceDashboard from "./pages/PoliceDashboard";
 import PoliceLogin from "./pages/PoliceLogin";
-import PoliceVerification from "./pages/PoliceVerification";
-function App() {
-  const [count, setCount] = useState(0)
-  const [collapsed, setCollapsed] = useState(false);
-  const [activeNav, setActiveNav] = useState("dashboard");
-    return (
-      //<PoliceDashboard/>
-      <PoliceLogin/>
-      //<PoliceVerification/>
-
-    )
+function App(){
+  return(
+    <BrowserRouter>
+    <Routes>
+      <Route path="/" element={<Landing/>} />
+      <Route path="/Login" element={<PoliceLogin/>}/>
+      <Route path="/TouristHome" element={<touristHome/>}/>
+      <Route path="/PoliceDashboard" element={<PoliceDashboard/>}/>
+      </Routes>
+      </BrowserRouter>
+  );
 }
-
-export default App
+export default App;
